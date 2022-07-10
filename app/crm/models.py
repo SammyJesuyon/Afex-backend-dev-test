@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save
 
 
 class BaseModel(models.Model):
@@ -21,7 +22,7 @@ class Client(BaseModel):
         ordering = ['cid']
 
     def __str__(self):
-        return self.cid
+        return f"{self.cid} - {self.first_name} {self.last_name}"
 
     @property
     def full_name(self):
@@ -29,7 +30,7 @@ class Client(BaseModel):
 
 
 class ClientWallet(BaseModel):
-    client = models.OneToOneField(Client, on_delete=models.CASCADE)
+    customer = models.OneToOneField(Client, related_name='clientwallet', on_delete=models.CASCADE, primary_key=True)
     total_balance = models.DecimalField(
         max_digits=20, decimal_places=2, default=0)
     available_balance = models.DecimalField(
@@ -42,4 +43,10 @@ class ClientWallet(BaseModel):
 
     @property
     def cid(self):
-        return self.client.cid
+        return self.customer.cid
+
+def post_client_signal(sender, instance, created, **kwargs):
+    if created:
+        ClientWallet.objects.create(customer=instance)
+
+post_save.connect(post_client_signal, sender=Client)

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afex Dev Test</title>
+</head>
+<body>
+    <div>
+        <h2>{{ client.first_name }} {{ client.last_name }}</h2>
+        <p>{{ client.country_code }}</p>
+        <p>{{ client.phone }}</p>
+        <p>{{ client.email }}</p>
+        <p>{{ client.address }}</p>
+        <p>{{ client.created }}</p>
+        <p>Available Balance: {{ client.clientwallet.available_balance }}</p>
+        <a href="{% url 'crm:fund_wallet' client.clientwallet.customer.pk %}">Fund Wallet</a>
+        <a href={% url 'crm:client_update' client.pk %}>Update Client</a>
+        <a href={% url 'crm:client_delete' client.pk %}>Delete Client</a>
+    </div>
+</body>
+</html>

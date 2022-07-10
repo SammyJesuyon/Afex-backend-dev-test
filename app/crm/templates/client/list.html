@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afex Dev Test</title>
+</head>
+<body>
+    {% if clients.count == 0 %}
+        <p>No clients found</p>
+        <a href={% url 'crm:create_client' %}><h2>Create client</h2></a>
+        
+    {% else %}
+    <h1>Clients List</h1>
+    <a href={% url 'crm:create_client' %}><h2>Create client</h2></a>
+    
+    {% for client in clients  %}
+        <div>
+            <ul>
+                <li><a href="{% url 'crm:client_detail' client.pk %}"><h3>{{ client.first_name }} {{ client.last_name }}</h3></a></li>
+            </ul>
+        </div>
+    {% endfor %}
+    {% endif %}
+</body>
+</html>

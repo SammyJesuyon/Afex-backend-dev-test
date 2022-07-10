@@ -22,3 +22,4 @@ A Django app has been created under `/apps/` called `crm`
 \*\*\* Optional
 
 1. Configure Docker for this project
+
