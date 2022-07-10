@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.views import generic
 from .models import Client, ClientWallet
 from .forms import ClientForm, FundWalletForm
+from rest_framework import generics
+from .serializers import ClientSerializer, ClientDetailSerializer
 
 
 class CreateClientView(generic.CreateView):
@@ -59,6 +61,16 @@ class FundWalletView(generic.UpdateView):
 
     def get_success_url(self):
         return reverse("crm:client_list")
+    
+
+class ClientList(generics.ListAPIView):
+    queryset = Client.objects.all()
+    serializer_class = ClientSerializer
+    
+
+class ClientDetail(generics.RetrieveAPIView):
+    queryset = ClientWallet.objects.all()
+    serializer_class = ClientDetailSerializer
 
 
 # def fund_wallet_view(request):
