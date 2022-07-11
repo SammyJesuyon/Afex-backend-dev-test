@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Wallet</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap');
+
+        body{
+            font-family: 'Lobster Two', cursive;
+        }
+    </style>
+    
+</head>
+<body>
+   <div>
+    <h1>Client Wallet</h1>
+   <div style="display:flex; justify-content:space-around;">
+    <div style="display:flex; flex-direction:column; align-items:center">
+        <div><h3>Client:</h3></div>
+        <div><p>{{ client.full_name }}</p></div>
+    </div>
+    <div style="display:flex; flex-direction:column; align-items:center">
+        <div><h3>Total Balance:</h3></div>
+        <div><p id="ws">{{ wallet.total_balance }}</p></div>
+    </div>
+   </div>
+    
+    
+
+    <script type="text/javascript">
+        let url = `ws://${window.location.host}/ws/socket-server/`;
+
+        const walletSocket = new WebSocket(url);
+
+        walletSocket.onmessage = function(event) {
+            let data = JSON.parse(event.data);
+            
+            if (data.type === 'wallet_message') {
+                let message = data.message;
+                document.getElementByID('ws').innerHTML = message;
+            } 
+        };
+        walletSocket.onclose = function(event) {
+            console.error('Connection closed.');
+        };
+    </script>
+   </div>
+</body>
+</html>

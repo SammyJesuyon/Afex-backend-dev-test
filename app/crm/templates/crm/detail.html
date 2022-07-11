@@ -32,16 +32,17 @@
 </head>
 <body>
     <div>
-        <h2>{{ client.first_name }} {{ client.last_name }}</h2>
-        <p>{{ client.country_code }}</p>
-        <p>{{ client.phone }}</p>
-        <p>{{ client.email }}</p>
-        <p>{{ client.address }}</p>
-        <p>{{ client.created }}</p>
+        <h2>Client Name: {{ client.first_name }} {{ client.last_name }}</h2>
+        <p>Country: {{ client.country_code }}</p>
+        <p>Phone: {{ client.phone }}</p>
+        <p>Email: {{ client.email }}</p>
+        <p>Address: {{ client.address }}</p>
+        <p>Date created: {{ client.created }}</p>
         <p>Available Balance: {{ client.clientwallet.available_balance }}</p>
-        <a href="{% url 'crm:fund_wallet' client.clientwallet.customer.pk %}">Fund Wallet</a>
-        <a href={% url 'crm:client_update' client.pk %}>Update Client</a>
+        <a href="{% url 'crm:fund_wallet' client.clientwallet.customer.pk %}">Fund Client Wallet</a>
+        <a href={% url 'crm:client_update' client.pk %}>Update Client Info</a>
         <a href={% url 'crm:client_delete' client.pk %}>Delete Client</a>
+        <a href={% url 'crm:client_list' %}>Go Back</a>
     </div>
 </body>
 </html>

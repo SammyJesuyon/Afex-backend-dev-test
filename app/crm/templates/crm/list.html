@@ -34,11 +34,11 @@
 <body>
     {% if clients.count == 0 %}
         <p>No clients found</p>
-        <a href={% url 'crm:create_client' %}><h2>Create client</h2></a>
+        <a href={% url 'crm:create_client' %}><h3>Create client</h3></a>
         
     {% else %}
-    <h1>Clients List</h1>
-    <a href={% url 'crm:create_client' %}><h2>Create client</h2></a>
+    <h2>Clients List</h2>
+    <a href={% url 'crm:create_client' %}><h3>Create client</h3></a>
     
     {% for client in clients  %}
         <div>

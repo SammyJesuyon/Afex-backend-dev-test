@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Afex Dev Test</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Lobster+Two:wght@400;700&display=swap");
+
+      body {
+        font-family: "Lobster Two", cursive;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <form action="" method="post">
+        {% csrf_token %}
+        <h1>Are you sure you want to delete?</h1>
+        <button
+          style="
+            background-color: #3f6b24;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Lobster Two', cursive;
+            font-size: 20px;
+          "
+          type="submit"
+        >
+          Confirm
+        </button>
+        <button
+          type="submit"
+          name="cancel"
+          value="Cancel"
+          style="
+            background-color: #3f6b24;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: 'Lobster Two', cursive;
+            font-size: 20px;
+          "
+          href="{% url 'crm:client_detail' client.pk %}"
+        >
+          Go Back
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

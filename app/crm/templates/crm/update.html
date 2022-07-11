@@ -1,4 +1,3 @@
-{%load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,8 +17,6 @@
 
 </head>
 <body>
-    <h1>Edit Wallet for  {{wallet.customer.first_name}} {{wallet.customer.last_name}} CID: {{wallet.customer.cid}}</h1>
-
-    {% include "form.html" with form=form button='Update Wallet Details' %}
+    {% include "form.html" with form=form button='Update Details' %}
 </body>
 </html>

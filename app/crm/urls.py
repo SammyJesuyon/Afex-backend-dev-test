@@ -2,7 +2,7 @@ from django import views
 from django.urls import path
 from .views import (
     CreateClientView, ListClientView, DetailClientView, UpdateClientView, DeleteClientView, FundWalletView,
-    ClientList, ClientDetail
+    ClientList, ClientDetail, client_websocket,
 )
 
 app_name = 'crm'
@@ -16,4 +16,5 @@ urlpatterns = [
     path('fundwallet/<int:pk>/', FundWalletView.as_view(), name='fund_wallet'),
     path('api/', ClientList.as_view(), name='client_list_api'),
     path('api/<int:pk>/', ClientDetail.as_view(), name='client_detail_api'),
+    path('ws/<str:cid>', client_websocket, name='client_websocket'),
 ]
