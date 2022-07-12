@@ -4,3 +4,5 @@ env/
 venv/
 db.sqlite3
 data/
+.env
+env/
