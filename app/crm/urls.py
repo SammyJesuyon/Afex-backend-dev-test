@@ -2,8 +2,9 @@ from django import views
 from django.urls import path
 from .views import (
     CreateClientView, ListClientView, DetailClientView, UpdateClientView, DeleteClientView, FundWalletView,
-    ClientList, ClientDetail, client_websocket,
+    ClientList, ClientDetail, client_websocket, 
 )
+
 
 app_name = 'crm'
 

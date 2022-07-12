@@ -20,5 +20,23 @@ services:
       - POSTGRES_NAME=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - DJANGO_ALLOWED_HOSTS=0.0.0.0
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
     depends_on:
       - db
+      - redis
+  celery:
+    build: .
+    command: bash -c "celery -A devtest worker -l INFO & celery -A devtest beat -l INFO"
+    volumes:
+      - .:/code
+    environment:
+      - DJANGO_ALLOWED_HOSTS=0.0.0.0
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
+    depends_on:
+      - db
+      - redis
+  redis:
+    image: redis

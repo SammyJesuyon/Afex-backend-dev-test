@@ -7,6 +7,8 @@ from .models import Client, ClientWallet
 from .forms import ClientForm, FundWalletForm
 from rest_framework import generics
 from .serializers import ClientSerializer, ClientDetailSerializer
+import requests
+import json
 
 
 class CreateClientView(generic.CreateView):
@@ -92,3 +94,4 @@ def client_websocket(request, cid):
 
     return render(request, 'crm/websockets.html', 
                   {'client': client, 'wallet': wallet})
+    
