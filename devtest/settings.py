@@ -31,7 +31,7 @@ SECRET_KEY = config("SECRET_KEY", default=get_random_secret_key(), cast=str)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', 'https://pure-sands-29572.herokuapp.com']
 
 
 # Application definition
