@@ -7,8 +7,6 @@ from .models import Client, ClientWallet
 from .forms import ClientForm, FundWalletForm
 from rest_framework import generics
 from .serializers import ClientSerializer, ClientDetailSerializer
-import requests
-import json
 
 
 class CreateClientView(generic.CreateView):
@@ -26,7 +24,7 @@ class CreateClientView(generic.CreateView):
 class ListClientView(generic.ListView):
     queryset = Client.objects.all()
     template_name = 'crm/list.html'
-    context_object_name = 'clients'
+    context_object_name = 'clients_list'
 
 
 class DetailClientView(generic.DetailView):

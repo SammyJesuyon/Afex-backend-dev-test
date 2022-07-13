@@ -32,21 +32,20 @@
     
 </head>
 <body>
-    {% if clients.count == 0 %}
+  {% if clients_list|length == 0 %}
         <p>No clients found</p>
-        <a href={% url 'crm:create_client' %}><h3>Create client</h3></a>
+        <a href="{% url 'crm:create_client' %}"><h3>Create client</h3></a>
         
     {% else %}
     <h2>Clients List</h2>
-    <a href={% url 'crm:create_client' %}><h3>Create client</h3></a>
-    
-    {% for client in clients  %}
+    <a href="{% url 'crm:create_client' %}"><h3>Create client</h3></a>
+    {% for client in clients_list %}
         <div>
             <ul>
                 <li><a href="{% url 'crm:client_detail' client.pk %}"><h3>{{ client.first_name }} {{ client.last_name }}</h3></a></li>
             </ul>
         </div>
     {% endfor %}
-    {% endif %}
+    {% endif %} 
 </body>
 </html>

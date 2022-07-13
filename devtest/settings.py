@@ -27,7 +27,7 @@ SECRET_KEY = "django-insecure-61vr#!3)f^effz!0n3_yi4pdpxzymmxrxi(!9rxf&p(hn1ujx)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pure-sands-29572.herokuapp.com']
+ALLOWED_HOSTS = ['pure-sands-29572.herokuapp.com','0.0.0.0']
 
 
 # Application definition
@@ -90,12 +90,12 @@ WSGI_APPLICATION = 'devtest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('POSTGRES_NAME'),
         'USER': os.environ.get('POSTGRES_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
-        'HOST': os.environ.get('HOST'),
-        'PORT': os.environ.get('PORT'),
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
