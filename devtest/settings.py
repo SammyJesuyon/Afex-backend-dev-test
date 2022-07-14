@@ -161,9 +161,9 @@ CELERY_RESULT_BACKEND = os.environ.get('CELERY_BROKER', 'redis://redis:6379/0')
 # CELERY_TIMEZONE = 'Africa/Lagos'
 
 #populates client model with data from API every 1hour
-CELERY_BEAT_SCHEDULE = {
-    'scheduled_task': {
-        'task': 'crm.tasks.populate_clients',
-        'schedule': 3600.0,
-    },
-}
+# CELERY_BEAT_SCHEDULE = {
+#     'scheduled_task': {
+#         'task': 'crm.tasks.populate_clients',
+#         'schedule': 60.0,
+#     },
+# }

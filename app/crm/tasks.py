@@ -6,7 +6,7 @@ from .models import Client
 
 
 @shared_task
-def populate_clients():
+def populate_clients(true):
     try:
         response = requests.get(
             'https://62c2c06cff594c656764970a.mockapi.io/users')

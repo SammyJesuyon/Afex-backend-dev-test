@@ -10,3 +10,12 @@ app = Celery('devtest')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
 app.autodiscover_tasks()
+
+
+app.conf.beat_schedule = {
+    'scheduled_task': {
+        'task': 'crm.tasks.populate_clients',
+        'schedule': 3600.0,
+        'args': ('true',),
+    },
+}
